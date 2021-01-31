@@ -1,0 +1,102 @@
+@font-face {
+    
+font-family: 'Nautilus Pompilius';
+    
+src: local('fonts/Nautilus Pompilius'), 
+local('fonts/NautilusPompilius'), 
+url('fonts/nautiluspompilius.woff2') format('woff2'), 
+url('fonts/nautiluspompilius.woff') format('woff'), 
+url('fonts/nautiluspompilius.ttf') format('truetype');
+   
+font-weight: 400;
+    
+font-style: normal;
+
+}
+
+@font-face {
+    
+font-family: 'graffiti';
+    
+src: local('graffiti'), 
+local('fonts/graffiti'), 
+url('fonts/graffiti.woff') format('woff'), 
+url('fonts/graffiti.ttf') format('truetype');
+   
+font-weight: 400;
+    
+font-style: normal;
+
+}
+
+
+
+@font-face {
+	    font-family: academrc;
+	    src: local("academrc"),
+         url(fonts/academrc.ttf);
+  }
+
+@font-face {
+	    font-family: a_machinaortoshtregular;
+	    src: local("a_machinaortoshtregular"),
+         url(fonts/a_machinaortoshtregular.ttf);
+  }
+  .hsearch {
+	font-family: graffiti ;
+	color: #a8738f;
+	font-size: 70px;
+	text-align: center;
+	margin-left: 10%;
+	display: inline-block;
+	vertical-align: middle;
+	height: 50%;
+	margin-top:5%;
+	margin-bottom: 10%;
+}
+
+#content {
+	min-height: 300px;
+}
+
+.container {
+	display: inline-block;
+	width: 400px;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+	/*margin-left:25%;*/
+}
+
+.container input#search {
+	width: 600px;
+	height: 50px;
+	background: #fbfbfb;
+	border: none;
+	font-size: 12pt;
+	margin: 0 auto;
+	color: #744858;
+	padding-left: 45px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+	margin-left:10px;
+	display: inline-block;
+
+}
+
+.container .icon {
+	position: absolute;
+	top: 20%;
+	margin-left: 15px;
+	z-index: 1;
+	color: #000000;
+}
+
+.container input#search:hover,
+.container input#search:focus,
+.container input#search:active {
+	outline: none;
+	background: #F5FFFA;
+}

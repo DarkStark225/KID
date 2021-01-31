@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = @ViewBag.product.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/style-product.css" />*@
+    <title>@ViewBag.product.name</title>
+    <link rel="stylesheet" href="~/Content/orbit.css">
+    <script type="text/javascript" src="~/Scripts/jquery-1.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.orbit.min.js"></script>
+    <script type="text/javascript">
+
+        var $jq = jQuery.noConflict();
+        $jq(window).load(function () {
+            $jq('#featured').orbit({
+                'bullets': true,
+                'timer': true,
+                'animation': 'horizontal-slide'
+            });
+        });
+    </script>
+</head>
+
+@*<div id="product">
+    <div id="main_image">
+        <img src="@ViewBag.product.image" height="500" alt="poster" />
+    </div>
+    <div id="main-info">
+        <div id="name">@ViewBag.product.name</div>
+        <div id="category">@ViewBag.product.category</div>
+        <div id="price">@ViewBag.product.price р.</div>
+        <div id="buy">           
+            @using (Html.BeginForm("AddToBasket", "Basket", FormMethod.Post))
+            {
+                <input type="hidden" name="productID" value=@ViewBag.id />
+                <input type="hidden" name="count" value=1 />
+                <div class="to_basket">
+                    <input type="submit" style="background-color:#BBB" value="Добавить в корзину" />
+                </div>
+            }
+            <br>
+            @if (ViewBag.role == "admin" || ViewBag.role == "main_admin")
+            {
+                <p>@Html.ActionLink("Изменить", "EditProduct", "Admin", new { id = ViewBag.product.ProductID }, null)</p>
+                <p>@Html.ActionLink("Удалить", "DeleteProduct", "Admin", new { id = ViewBag.product.ProductID }, null)</p>
+            }
+        </div>
+        <div id="rating"> </div>
+        <div id="availability">
+            <img src="~/Content/images/index/galochka1.png"> Товар есть в наличии
+        </div>
+    </div>
+    <div id="description">
+        <p>
+            Описание:<br />
+            @ViewBag.product.description
+            @*<br>Игрушка "Робопёс" с пультом управления<br>
+                Игрушка-робот, в виде собаки с пультом дистанционного управления.<br>
+                Рассчитана на возраст с 3 лет.<br>
+                Игрушка музыкальная. Во время движения перебирает лапками, издает звуки и мигает глазками.<br>
+                При столкновении с препятствиями разворачивается и двигается в другую сторону.<br>
+                Может двигать хвостом, открывать и закрывать рот, танцевать, трясти головой и лаять. Из дополнительных функций: задает вопросы, поет (на китайском языке).<br>
+                Требуются батарейки типа "АА" 4 шт. для игрушки и 2 шт. для пульта (приобретаются отдельно).<br>
+                Собака умеет ходить, бегать, гавкать и лаять.<br>
+                Все движения игрушки сопровождаются веселой музыкой и яркими мигающими индикаторами, расположенными в глазах и лапах.<br>
+                Модель станет увлекательным подарком ребенку.<br>
+                Родители смогут весело проводить время вместе с детьми, играющими с новым другом.<br>
+                Размеры: 200х170х130 мм, вес 300 гр.
+    </div>
+    <div class="block-title">Фотографии товара:<</div>
+    <div id="featured">
+        <img src="@ViewBag.product.shots1" width="1010" />
+        <img src="@ViewBag.product.shots2" width="1010" />
+        <img src="@ViewBag.product.shots3" width="1010" />
+    </div>
+
+</div>*@
+
+
+
+
+
+
+
+<div class="product_det">
+    <div class="images">
+        <img class="main_img" src="~/Content/images/@ViewBag.product.image" />       
+    </div>
+    <div class="info">
+        <h2>@ViewBag.product.name</h2>
+        <br />
+        <h2>Цена: @ViewBag.product.price рублей</h2>
+        <h2>Производитель: @ViewBag.product.brand</h2>
+        <h2>Рейтинг: @ViewBag.product.rating</h2>
+        <div id="availability">
+            <img src="~/Content/images/index/galochka1.png"> Товар есть в наличии
+        </div>
+    </div>
+    <div class="basket_edit">
+        @using (Html.BeginForm("AddToBasket", "Basket", FormMethod.Post))
+        {
+            <input type="hidden" name="productID" value=@ViewBag.id />
+            <input type="hidden" name="count" value=1 />   
+            <input type="image" name="commit" style="background-image:url(/Content/images/add_cart_green.gif); width:228px;height:48px" value="">            
+        }          
+        @if (ViewBag.role == "admin" || ViewBag.role == "main_admin")
+        {
+            <p>@Html.ActionLink("Изменить", "EditProduct", "Admin", new { id = ViewBag.product.ProductID }, null)</p>
+            <p>@Html.ActionLink("Удалить", "DeleteProduct", "Admin", new { id = ViewBag.product.ProductID }, null)</p>
+        }
+    </div>
+</div>
+<div class="product_desr">
+    <div class="content-title_1">Описание:</div>
+    <p>@ViewBag.product.description</p>
+    <br>
+</div>
+<div class="content-title_1">Фотографии товара:</div>
+<div id="featured">
+    <img src="~/Content/images/@ViewBag.product.shots1" height="500" width="800" />
+    <img src="~/Content/images/@ViewBag.product.shots2" height="500" width="800" />
+    <img src="~/Content/images/@ViewBag.product.shots3" height="500" width="800" />
+</div>

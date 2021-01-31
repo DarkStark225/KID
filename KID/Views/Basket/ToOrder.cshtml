@@ -1,0 +1,26 @@
+﻿
+
+@{
+    ViewBag.Title = "Оформление заказа";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-title_1">Оформление заказа:</div>
+<div class="content-title_1">Сумма вашего заказа: @ViewBag.summ рублей.</div>
+<div id="form">
+    @using (Html.BeginForm("MakeOrder", "Basket", FormMethod.Post))
+    {
+        <p>Email: <input type="email" name="email" value="@ViewBag.client.email" placeholder="email"></p>
+        <p>Почтовый адрес: <input type="text" name="adress" value="@ViewBag.client.post" placeholder="Почтовый адрес"></p>
+        <input type="hidden" name="or_number" value="@ViewBag.or_number" />
+        <p>
+            Способ оплаты:
+            <select name="pay">
+                <option>Чек</option>
+                <option>Безналичная оплата</option>
+                <option>Оплата наличными</option>
+            </select>
+        </p>
+        <p><input type="submit" name="commit" value="Оформить заказ"></p>
+    }
+</div>
+

@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "KID";
+}
+
+<link rel="stylesheet" href="~/Content/orbit.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.orbit.min.js"></script>
+<script type="text/javascript">
+        $(window).load(function () {
+            $('#featured').orbit({
+                'bullets': true,
+                'timer': true,
+                'animation': 'horizontal-slide'
+            });
+        });
+</script>
+
+
+    <div id="featured">
+
+        <img src="~/Content/images/index/3.jpg" width="800" alt="Link" />
+        <img src="~/Content/images/index/4.jpg" width="800" alt="Ezio" rel="ezioCaption" />
+        <img src="~/Content/images/index/5.jpg" width="800" alt="Master Chief" />
+        <img src="~/Content/images/index/6.jpg" width="800" alt="Marcus Fenix" rel="marcusCaption" />
+    </div>
+
+
+
+
+<div id="advert">
+    <a href="#"><img src="~/Content/images/index/7.jpg" height="300" alt="poster" /></a>
+    <a href="#"><img src="~/Content/images/index/8.jpg" height="300" alt="poster" /></a>
+    <a href="#"><img src="~/Content/images/index/hit_t_1.png" alt="poster" /></a>
+</div>
+
+
+
+<div class="content-title_1">Новые товары:</div>
+<div class="recommendations">
+    @{
+
+        var count = 4;
+        foreach (var product in ViewBag.products)
+        {
+            if (count > 0)
+            {
+
+                <span class="product-item">
+                    <a href="/Product/Index/@product.ProductID"><img src='~/Content/images/@product.image' height="220" alt="poster" /></a>
+                    <div class="item-info">
+                    @Html.ActionLink((string)product.name, "Index", "Product", new { id = @product.ProductID }, null)<br /> 
+                    @Html.ActionLink((string)product.price.ToString()+" руб.", "Index", "Product", new { id = @product.ProductID }, null)
+                    </div>
+                </span>
+                count--;
+            }
+            else { break; }
+        }
+    }
+</div>

@@ -1,0 +1,39 @@
+﻿
+
+@{
+    ViewBag.Title = @ViewBag.category;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-title_1">@ViewBag.category @ViewBag.sex</div>
+            
+   @*<div class="products">
+            @foreach (var product in ViewBag.products)
+            {
+                <div class="product">
+                    <img class="product-img" src='/Content/images/@product.image' />
+                    <br>@Html.ActionLink((string)product.name, "Index", "Product", new { id = product.ProductID }, null)
+                    <br />@product.price
+                </div>
+            }
+        </div>*@
+
+
+<div class="recommendations">
+    @{
+       
+        foreach (var product in ViewBag.products)
+        {
+           
+                <span class="product-item">
+                    <a href="/Product/Index/@product.ProductID"><img src='~/Content/images/@product.image' height="220" alt="poster" /></a>
+                    <div class="item-info">
+                        @Html.ActionLink((string)product.name, "Index", "Product", new { id = @product.ProductID }, null)<br />
+                        @Html.ActionLink((string)product.price.ToString() + " руб.", "Index", "Product", new { id = @product.ProductID }, null)
+                    </div>
+                </span>
+                                       
+        }
+    }
+</div>

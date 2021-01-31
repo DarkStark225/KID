@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Вход";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Войти:</div>
+<div id="form">
+    @using (Html.BeginForm("Loggin", "User", FormMethod.Post))
+    {
+        <input type="text" name="login" value="" placeholder="Логин или Email">
+        <input type="password" name="password" value="" placeholder="Пароль">
+        <input type="submit" name="commit" value="Войти">
+    }
+
+    @if (ViewBag.error != null)
+    {
+        <p>@ViewBag.error</p>
+    }
+</div>

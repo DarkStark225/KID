@@ -1,0 +1,85 @@
+﻿
+
+@{
+    ViewBag.Title = "Ваши заказы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-title_1">Ваши заказы:</div>
+
+
+<style type="text/css">
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    th {
+        padding: 10px 20px;
+        background: #AAA;
+        color: black;
+        border: 2px solid;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+        th:first-child {
+            text-align: left;
+        }
+
+    tr:last-child {
+        border-top: 2px black;
+    }
+
+    td {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        border-top: 2px solid #ddd;
+        border-bottom: 2px solid #ddd;
+        border-right: 2px solid #ddd;
+    }
+
+        td:first-child {
+            border-left: 2px solid #ddd;
+        }
+
+        td:last-child {
+            border-left: none;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+
+    table a {
+        font-size: 20px;
+        color: black;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>№ заказа</th>
+        <th>Адрес</th>
+        <th>Сумма заказа</th>
+        <th>Дата заказа</th>
+        <th>Способ оплаты</th>
+        <th>Статус</th>
+    </tr>
+    @for (int i = 0; i < ViewBag.count; i++)
+    {
+        <tr>
+            <td>@Html.ActionLink((string)ViewBag.order[i].on, "PageOrders", "Basket", new { number = ViewBag.order[i].or_numb, summ = @ViewBag.order[i].ssumm }, null)</td>
+            <td>@ViewBag.order[i].adress</td>
+            <td>@ViewBag.order[i].ssumm рублей</td>
+            <td>@ViewBag.order[i].date</td>
+            <td>@ViewBag.order[i].pay</td>
+            <td>@ViewBag.order[i].status</td>
+        </tr>
+    }
+</table>
+

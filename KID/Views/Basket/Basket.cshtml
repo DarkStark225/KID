@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Корзина";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Ваша корзина:</div>
+<br>
+<br />
+<style type="text/css">
+        table {
+            border-spacing: 0 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        th {
+            padding: 10px 20px;
+            background: #AAA;
+            color: black;
+            /*border-right: 2px solid;*/
+            border: 2px solid;
+            /*border-left-color:black;
+    border-right-color:black;*/
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+            th:first-child {
+                text-align: left;
+            }
+
+        tr:last-child {
+            border-top: 2px black;
+        }
+        /*th:last-child {
+    border-right: none;
+    }*/
+        td {
+            vertical-align: middle;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+            border-right: 2px solid #ddd;
+        }
+
+            td:first-child {
+                border-left: 2px solid #ddd;
+                border-right: none;
+            }
+
+            td:nth-child(2) {
+                text-align: left;
+            }
+
+        table a {
+            font-size: 20px;
+            color: black;
+        }
+</style>
+
+<table>
+    <tr>
+        <th colspan="2">Товар</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th>Итого</th>
+        <th></th>
+    </tr>
+    @if (ViewBag.basket != null)
+    {
+        foreach (var b in ViewBag.basket)
+        {
+            <tr>
+                <td><img src="~/Content/images/@b.Product.image" height="100"></td>
+                <td>@Html.ActionLink((string)b.Product.name, "Index", "Product", new { id = b.Product.ProductID }, null)</td>
+                <td>@b.Product.price рублей</td>
+                <td>@b.Count шт.</td>
+                <td>@{int i = b.Product.price * b.Count;}@i рублей</td>
+                <td>@Html.ActionLink("Удалить из корзины", "DeleteFromBasket", "Basket", new { productID = b.Product.ProductID }, null)</td>
+            </tr>
+                        }
+                    }
+    <tr><th colspan="4">Сумма</th><th>@ViewBag.summ рублей</th><th>@Html.ActionLink("Заказать", "ToOrder", "Basket")</th></tr>
+</table>
+

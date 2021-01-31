@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Регистрация:</div>
+<div id="form">
+    @using (Html.BeginForm("Registration", "User", FormMethod.Post))
+    {
+        <p><input type="text" name="login" value="" placeholder="Логин или Email"></p>
+        <p><input type="password" name="password" value="" placeholder="Пароль"></p>
+        <p><input type="email" name="email" value="" placeholder="Почтовый ящик"></p>
+        <p><input type="text" name="post" value="" placeholder="Почтовый адрес"></p>
+        <p><input type="submit" name="commit" value="Зарегистрироваться"></p>
+    }
+
+    @if (ViewBag.error != null)
+    {
+        <p>@ViewBag.error</p>
+    }
+</div>

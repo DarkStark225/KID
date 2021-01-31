@@ -1,0 +1,12 @@
+﻿
+
+@{
+    ViewBag.Title = "MakeOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-title_1">Ваш заказ №@ViewBag.or_number на сумму @ViewBag.summ готов к оплате.</div>
+
+<br />
+<div id="form">
+    <p>@Html.ActionLink("История заказов", "OrdersPage", "User")</p>
+</div>

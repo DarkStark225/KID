@@ -1,0 +1,93 @@
+﻿
+
+@{
+    ViewBag.Title = "Администрирование ролей";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Администрирование ролей:</div>
+
+<style type="text/css">
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    th {
+        padding: 10px 20px;
+        background: #AAA;
+        color: black;
+        border: 2px solid;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+        th:first-child {
+            text-align: left;
+        }
+
+    tr:last-child {
+        border-top: 2px black;
+    }
+
+    td {
+        vertical-align: middle;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        border-top: 2px solid #ddd;
+        border-bottom: 2px solid #ddd;
+        border-right: 2px solid #ddd;
+    }
+
+        td:first-child {
+            border-left: 2px solid #ddd;
+        }
+
+        td:last-child {
+            border-left: none;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+        }
+
+    table a {
+        font-size: 20px;
+        color: black;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>ID пользователя</th>
+        <th>Логин пользователя</th>
+        <th>Роль пользователя</th>
+        <th>Изменить роль</th>
+    </tr>
+    @foreach (var user in ViewBag.users)
+    {
+        <tr>
+            <td>@user.UserID</td>
+            <td>@user.login</td>
+            <td>@user.role</td>
+            <td>
+                @using (Html.BeginForm("ChangeRole", "Admin", FormMethod.Post))
+                {
+                    <input type="hidden" name="userid" value="@user.UserID" />
+                    <select name="role">
+                        <option>user</option>
+                        <option>admin</option>
+                        <option>main_admin</option>
+                    </select>
+                    <input type="submit" name="commit" value="Изменить">
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Личный кабинет";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Личный кабинет пользователя:</div>
+<div id="form">
+    @Html.ActionLink("История заказов", "OrdersPage", "User")
+    <br />
+    <br />
+    <br />
+    @{
+        if (ViewBag.role == "admin" || ViewBag.role == "main_admin")
+        {
+            <p>@Html.ActionLink("Добавить товар", "AddProduct", "Admin")</p>
+            <p>@Html.ActionLink("Администрирование заказов", "AllOrdersPage", "User")</p>
+        }
+        if (ViewBag.role == "main_admin")
+        {
+            <p>@Html.ActionLink("Управление ролями", "RolesAdmin", "Admin")</p>
+        }
+    }
+    @using (Html.BeginForm("LogginOut", "User", FormMethod.Post))
+    {
+        <input type="submit" name="commit" value="Выйти">
+    }
+</div>

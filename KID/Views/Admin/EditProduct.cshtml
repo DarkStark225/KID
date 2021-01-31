@@ -1,0 +1,50 @@
+﻿
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-title_1">Изменение товара:</div>
+<div id="form">
+    @using (Html.BeginForm("EditProductToDB", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="hidden" name="id" value="@ViewBag.id">
+        <table>
+            <tr><td>Название </td><td><input required type="text" value="@ViewBag.product.name" name="name" /></td></tr>
+            <tr><td>Главное фото </td><td><input type="file" name="image" /></td></tr>
+            <tr><td>Описание </td><td><input required type="text" value="@ViewBag.product.description" name="description" /></td></tr>
+            <tr><td>Категория </td><td><input required type="text" value="@ViewBag.product.category" name="category" /></td></tr>
+            <tr><td>Бренд </td><td><input required type="text" value="@ViewBag.product.brand" name="brand" /></td></tr>
+            <tr><td>Рейтинг </td><td><input required type="number" value="@ViewBag.product.rating" name="rating" /></td></tr>
+            <tr>
+                <td>Для кого предназначен товар</td>
+                <td>
+                    <select name="sex">
+                        <option>Для мальчиков</option>
+                        <option>Для девочек</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Возраст </td>
+                <td>
+                    <select name="age">
+                        <option>0-12 месяцев</option>
+                        <option>1-3 года</option>
+                        <option>4-5 лет</option>
+                        <option>6-8 лет</option>
+                        <option>9-12 лет</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><td>Цена </td><td><input required type="number" value="@ViewBag.product.price" name="price" /></td></tr>
+            <tr><td>Скидка </td><td><input required type="number" value="@ViewBag.product.discount" name="discount" /></td></tr>
+            <tr><td>Картинка 1 </td><td><input type="file" name="shots1" /></td></tr>
+            <tr><td>Картинка 2 </td><td><input type="file" name="shots2" /></td></tr>
+            <tr><td>Картинка 3 </td><td><input type="file" name="shots3" /></td></tr>
+            <tr><td><input type="submit" value="Загрузить" /></td><td></td></tr>
+        </table>
+    }
+
+</div>
